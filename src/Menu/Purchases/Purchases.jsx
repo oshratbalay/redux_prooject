@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Purchases() {
   const data = useSelector((state) => state);
+  const navigate = useNavigate()
+
   const [product, setproduct] = useState();
   const [customer, setCustomer] = useState();
   const [date, setdate] = useState();
@@ -55,7 +58,8 @@ export default function Purchases() {
   // showCustomersName()
   
   return (
-    <div>
+    <div style={{textAlign:'center'}}>
+      <h1>purchaes</h1>
       products:{" "}
       <select onChange={(e) => setproduct(e.target.value)} name="" id="">
         <option value="">select</option>
@@ -81,7 +85,8 @@ export default function Purchases() {
       <button onClick={showCustomersName} >search</button>
       <div>{search}</div>
       <br />
-      <Link to={"/"}>back to menu</Link>
+      <button style={{width:'200px' ,height:'30px',border:'0'}}  onClick={()=>navigate('/')}>back to menu</button>
+      <img src="../" alt="" />
     </div>
   );
 }

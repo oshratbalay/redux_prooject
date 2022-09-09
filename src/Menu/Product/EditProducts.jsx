@@ -44,7 +44,7 @@ export default function EditProducts() {
     dispatch(action);
   };
   return (
-    <div>
+    <div style={{textAlign:'center'}}>
       <h3>ID:{id}</h3>
       name: <input onChange={handleInput} name="name" type="text" /> <br />
       <br />

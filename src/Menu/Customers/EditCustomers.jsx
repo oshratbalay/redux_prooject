@@ -43,7 +43,7 @@ export default function EditCustomers() {
     dispatch(action);
   };
   return (
-    <div>
+    <div style={{textAlign:'center'}}>
       <h1>hey {name}</h1>
       <h3>{id}</h3>
       fName : <input

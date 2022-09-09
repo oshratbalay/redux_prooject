@@ -28,7 +28,7 @@ function save() {
 
 
   return (
-    <div>
+    <div style={{textAlign:'center'}} >
       <h1>Hay {name}</h1>
       <label htmlFor="">add more product:</label>
       <select
