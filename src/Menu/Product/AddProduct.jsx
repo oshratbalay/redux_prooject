@@ -8,20 +8,23 @@ export default function AddProduct() {
   const { id, name } = useParams();
   const dataState = useSelector((state) => state);
   const [selectVal, setSelectVal] = useState();
-  const [productID, setproductID] = useState();
+  const [alert, setalert] = useState();
+
+
 
 let findIdProduct = dataState.products.find(product => product.name == selectVal)
-console.log(findIdProduct?.ID);
+
 
   const dispatch = useDispatch()
   const d = new Date();
 
 function save() {
-  let action = {type:'SAVE', payload:{ ID: `c${Math.floor(Math.random()*50)}`, customerID: `${id}`, productID: `${d.getDate()}/${d.getUTCMonth()+1}/${d.getFullYear()}` }}
+  let action = {type:'SAVE', payload:{ ID: `c${Math.floor(Math.random()*50)}`, customerID: `${id}`, productID: findIdProduct?.ID  ,date: `${d.getDate()}/${d.getUTCMonth()+1}/${d.getFullYear()}` }}
   dispatch(action)
+  setalert('you seccses to add more product ')
+
 }
 
-console.log(dataState);
 
 
   return (

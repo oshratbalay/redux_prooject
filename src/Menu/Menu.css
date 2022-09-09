@@ -1,0 +1,31 @@
+body{
+ color: black;
+    background-image: url('https://papers.co/wallpaper/papers.co-au11-apple-pink-rose-gold-minimal-illustration-art-25-wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:40px ;
+    height: 100px;
+
+}
+
+.menu{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 250px;
+margin-left: 150px;
+justify-content: space-around;
+}
+
+.menu a{
+    color: black;
+    font-size:30px ;
+
+}

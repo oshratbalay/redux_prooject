@@ -22,56 +22,50 @@ export default function ShowProducs() {
 
   showCustomersName();
   return (
-    <div>
-      <h3 >products</h3>
-      <table border={1}>
-        <tbody>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Customers Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-          </tr>
+    <div style={{display:'flex',alignItems:'center',flexDirection:'column'}}>
+      <h1>products</h1>
+    <div style={{display:'flex', justifyContent:'space-around',width:'1000px' }}>
+      
           {dataState.products.map((product, i) => {
             return (
-              <tr key={i}>
-                <td> {product.ID}</td>
-                <td>
-                  <Link to={`/editProducts/${product.ID}`}> {product.name}</Link>
-                </td>
-                <td>
+              <div  key={i}>
+                <div> Product ID : {product.ID}</div>
+                <div>
+                  Product Name:<Link to={`/editProducts/${product.ID}`}> {product.name}</Link>
+                </div>
+                <div>Price : {product.price}</div>
+                <div> Quantity {product.quantity}</div>
+                <div>
                   {showCustomersName(product.ID)?.map((val, i) => (
-                    <div
+                    <div 
                       key={i}
                       style={{
-                        display: "flex",
-                        justifyContent: "space-around",
+                        margin:'5px 0',
+                        borderTop:'2px solid grey',
+                        borderBottom:'2px solid grey'
                       }}
                     >
-                      <div style={{ display: "flex", flexDirection: "column" }}>
-                        <span>
-                          <Link to={`/EditCustomers/${val.ID}/${val.fName}`}>{val.fName}</Link>{" "}
-                        </span>
+                      <div >
+                        <div>
+                         Customer Thet Buy : <Link to={`/EditCustomers/${val.ID}/${val.fName}`}> {val.fName}</Link>{" "}
+                        </div> 
                         {filterPurchases
                           .filter((p) => p.customerID === val.ID)
                           .map((v, i) => (
-                            <span key={i}>{v.date}</span>
+                            <div key={i}>purchase date : {v.date}</div>
                           ))}
                       </div>
-                      <div style={{ display: "flex", flexDirection: "column" }}>
-                        <button onClick={()=>navigate(`/addproduct/${val.ID}/${val.fName}`)} style={{ border: "0" }}>add</button> <br />
-                      </div>
+                     
+                      add more product :  <button onClick={()=>navigate(`/addproduct/${val.ID}/${val.fName}`)} style={{ border: "0" }}>add</button> <br />
+                     
                     </div>
                   ))}
-                </td>
-                <td> {product.price}</td>
-                <td> {product.quantity}</td>
-              </tr>
+                </div>
+                
+              </div>
             );
           })}
-        </tbody>
-      </table>
-    </div>
+        
+    </div></div>
   );
 }

@@ -7,6 +7,7 @@ export default function Purchases() {
   const [product, setproduct] = useState();
   const [customer, setCustomer] = useState();
   const [date, setdate] = useState();
+  const [search, setsearch] = useState();
 
   let filterProductName = data.products.filter(
     (product1) => product1.name === product
@@ -19,9 +20,10 @@ export default function Purchases() {
   let filterPurchasesDate = data.purchases.filter(
     (purchaes1) => purchaes1.date === date
   );
- let search ;
+
   let filterPurchases;
-  function showCustomersName() {
+ 
+  const showCustomersName = () => {
     filterPurchases = data.purchases?.filter(
       (purchase) => purchase.productID === filterProductName[0]?.ID
     );
@@ -38,15 +40,20 @@ export default function Purchases() {
         );
 
     if (filterDate === undefined || filterDate.includes(undefined)) {
-      search = "the purchaes not found"
+      setsearch( "the purchaes not found");
+     
     } else {
-      search = 'gfhgbjnm'
-      console.log(filterDate);
+      setsearch (filterDate.map((purchaes, i) => (
+        <div key={i}>
+          purchaes id : {purchaes.ID} product id : {purchaes.productID}customer
+          id : {purchaes.customerID}
+        </div>
+      )) ) 
+    
     }
   }
-
-  showCustomersName()
-console.log(search);
+  // showCustomersName()
+  
   return (
     <div>
       products:{" "}
@@ -71,9 +78,8 @@ console.log(search);
       <br />
       Date: <input onChange={(e) => setdate(e.target.value)} type="text" />
       <br />
-      <button onClick={()=>showCustomersName()}>search</button>
+      <button onClick={showCustomersName} >search</button>
       <div>{search}</div>
-      {}
       <br />
       <Link to={"/"}>back to menu</Link>
     </div>
