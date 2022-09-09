@@ -11,6 +11,7 @@ import AddProduct from "./Menu/Product/AddProduct";
 export default function App() {
   return (
     <div>
+      <div>heyos</div>
       <Routes>
         <Route path="" element={<Menu />} />
         <Route path="products" element={<Product />} />
